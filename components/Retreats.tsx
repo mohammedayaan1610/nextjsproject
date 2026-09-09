@@ -1,77 +1,90 @@
-const retreats = [
+"use client";
+
+import RetreatCard from "./ui/cards/RetreatCard";
+interface RetreatData {
+  id: string;
+  title: string;
+  countries: string;
+  image: string;
+}
+
+const RETREATS_DATA: RetreatData[] = [
   {
-    name: "Introvert Retreats",
+    id: "introvert",
+    title: "Introvert Retreats",
     countries: "78+ Countries",
-    image:
-      "/vita-travel-assets/6971da64c60674c148d40058_statistic-3.webp",
+    image: "/images/retreat-introvert.webp",
   },
   {
-    name: "Yoga Retreats",
+    id: "yoga",
+    title: "Yoga Retreats",
     countries: "89+ Countries",
-    image:
-      "/vita-travel-assets/6971da641fb15bbf6432e993_statistic-1.webp",
+    image: "/images/retreat-yoga.webp",
   },
   {
-    name: "Detox",
+    id: "detox",
+    title: "Detox",
     countries: "56+ Countries",
-    image:
-      "/vita-travel-assets/6971da644ade29a121769faf_statistic-2.webp",
+    image: "/images/retreat-detox.webp",
   },
 ];
 
 export default function Retreats() {
   return (
-    <section className="bg-[#091b20] text-white">
+    <section
+      id="retreats"
+      className="bg-[#091b20] text-white pt-12 sm:pt-16 md:pt-20 lg:pt-16 pb-0 scroll-mt-20"
+    >
 
-      {/* Heading */}
-      <div className="px-10 pt-14 pb-12">
+      {/* Section Heading */}
+      <div className="w-full px-5 sm:px-8 md:px-10 lg:px-10">
+        <div className="flex flex-col md:flex-row items-start mb-8 sm:mb-12 md:mb-16 lg:mb-12">
 
-        <p className="text-sm font-semibold text-white/50">
-          ✦ Retreats
-        </p>
-
-        <h2 className="ml-[25%] mt-2 max-w-[760px] text-[3.8rem] font-semibold leading-[1.08]">
-          We've vetted retreats in
-          <br />
-          more than 100 countries
-          <br />
-          See for yourself
-        </h2>
-
-      </div>
-
-      {/* Retreat cards */}
-      <div className="grid grid-cols-3 border-t border-white/10">
-
-        {retreats.map((retreat) => (
-          <div
-            key={retreat.name}
-            className="border-r border-white/10 px-10 pt-8 pb-10 last:border-r-0"
-          >
-
-            {/* Card heading */}
-            <div className="mb-4 flex items-center justify-between">
-
-              <h3 className="text-lg font-semibold">
-                {retreat.name}
-              </h3>
-
-              <p className="text-lg font-semibold text-white/50">
-                / {retreat.countries}
-              </p>
-
-            </div>
-
-            {/* Card image */}
+          {/* Left Label */}
+          <div className="w-full md:w-[22.5%] lg:w-[25%] mb-3 md:mb-0 lg:pt-1 flex items-center gap-2">
             <img
-              src={retreat.image}
-              alt={retreat.name}
-              className="block h-[420px] w-full object-cover"
+              src="/images/logo-mini.svg"
+              alt=""
+              className="w-[18px] h-[18px] object-contain opacity-40"
             />
 
+            <span className="text-[0.875rem] font-medium tracking-[-0.02em] text-white">
+              Retreats
+            </span>
           </div>
-        ))}
 
+          {/* Main Heading */}
+          <div className="w-full md:w-[77.5%] lg:w-[75%]">
+            <h2 className="text-[1.85rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3.5rem] font-semibold leading-[1.08] tracking-[-0.04em] text-white max-w-[850px]">
+              We&apos;ve vetted retreats in
+              <br className="hidden sm:inline" />
+              more than 100 countries
+              <br className="hidden sm:inline" />
+              See for yourself
+            </h2>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Retreat Cards */}
+      <div className="w-full border-t border-b border-white/10 overflow-hidden">
+        <div className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible no-scrollbar px-5 sm:px-8 md:px-0 divide-x md:divide-y-0 md:divide-x divide-white/10">
+
+          {RETREATS_DATA.map((retreat) => (
+            <div
+              key={retreat.id}
+              className="shrink-0 w-[82vw] sm:w-[70vw] md:w-auto"
+            >
+              <RetreatCard
+                title={retreat.title}
+                countries={retreat.countries}
+                image={retreat.image}
+              />
+            </div>
+          ))}
+
+        </div>
       </div>
 
     </section>
