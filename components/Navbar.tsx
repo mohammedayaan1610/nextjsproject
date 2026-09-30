@@ -8,9 +8,11 @@ interface NavItem {
 }
 
 const navItems = [
-  { label: "Retreats", href: "#retreats" },
-  { label: "Coaches", href: "#coaches" },
+  { label: "Retreats", href: "/#retreats" },
+  { label: "Coaches", href: "/#coaches" },
   { label: "Contacts", href: "/contact" },
+  { label: "To-Do List", href: "/todo" },
+  { label: "JSONPlaceholder", href: "/jsonplaceholder" },
 ];
 
 export default function Navbar() {
